@@ -1,0 +1,31 @@
+<package>
+  <name>ruban_gnss_sim</name>
+  <version>0.1.0</version>
+
+  <description>This package contains a number of URDF tutorials.</description>
+  <author email="969929193@qq.com">HAO.hao</author>
+
+  <maintainer email="969929193@qq.com">HAO.hao</maintainer>
+
+  <license>BSD</license>
+  <url>http://ros.org/wiki/urdf_tutorial</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <run_depend>gps_umd</run_depend>
+  <run_depend>hector_gazebo</run_depend>
+  <run_depend>nmea_msgs</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>joint_state_publisher_gui</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>ur_description</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+
+
+</package>

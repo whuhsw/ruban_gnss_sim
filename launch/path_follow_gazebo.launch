@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<launch>
+
+    <node name="ruban_gnss_path_loader" pkg="ruban_gnss_sim" type="path_loader_gazebo.py">
+	<param name="gnss_using_file_path" value="$(find ruban_gnss_sim)"/>
+    </node>
+    <node name="ruban_gnss_pose_updater" pkg="ruban_gnss_sim" type="pose_updater_gazebo.py"/>
+    <node name="ruban_gnss_path_follow" pkg="ruban_gnss_sim" type="persuit_gazebo.py"/>
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find ruban_gnss_sim)/rviz/gnss_nav_rviz_setting.rviz"/>
+
+
+</launch>

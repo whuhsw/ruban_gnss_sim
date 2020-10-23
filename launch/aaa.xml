@@ -1,0 +1,31 @@
+<launch>
+
+    <arg name="x_pos" default="-3.0"/>
+    <arg name="y_pos" default="1.0"/>
+    <arg name="z_pos" default="0.0"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find ruban_gnss_sim)/worlds/field.world"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder $(find ruban_gnss_sim)/urdf/ruban_gnss_car.xacro "/>
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -model turtlebot3 -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description"/>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="pub_sentence" pkg="ruban_gnss_sim" type="nmea_sentence_pub_gazebo.py"/>
+    <node name="gps_to_umd" pkg="gps_common" type="utm_odometry_node">
+        <remap from="odom" to="/gps_meas"/>
+        <param name="rot_covariance" value="99999"/>
+        <param name="frame_id" value="base_footprint"/>
+    </node>
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find ruban_gnss_sim)/rviz/gazebo_sim.rviz"/>
+
+</launch>

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<launch>
+
+    <node name="ruban_gnss_record_gazebo" pkg="ruban_gnss_sim" type="path_record_gazebo.py">
+	<param name="gnss_record_file_path" value="$(find ruban_gnss_sim)"/>
+    </node>
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find ruban_gnss_sim)/rviz/record_rviz_setting_gazebo.rviz"/>
+
+
+</launch>

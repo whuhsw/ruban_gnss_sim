@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<launch>
+
+    <node name="ruban_gnss_path_follow" pkg="ruban_gnss_sim" type="persuit_gazebo.py"/>
+
+
+</launch>
